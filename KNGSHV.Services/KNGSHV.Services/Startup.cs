@@ -1,16 +1,20 @@
+using AutoMapper;
+using KNGSHV.Application.AutoMapper;
+using KNGSHV.Application.Implementation;
+using KNGSHV.Application.Interfaces;
+using KNGSHV.Data.EF;
+using KNGSHV.Data.Entities;
+using KNGSHV.Infrastructure.Interfaces;
+using KNGSHV.Services.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace KNGSHV.Services
 {
@@ -26,12 +30,75 @@ namespace KNGSHV.Services
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Inject AppSettings
+            services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "KNGSHV.Services", Version = "v1" });
             });
+
+
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddMemoryCache();
+
+            services.AddDbContext<AppDbContext>(options =>
+                                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                                    o => o.MigrationsAssembly("KNGSHV.Data.EF")));
+
+            // Authen
+            services.AddIdentity<Account, Function>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddScoped<SignInManager<Account>, SignInManager<Account>>();
+            services.AddScoped<UserManager<Account>, UserManager<Account>>();
+            services.AddScoped<RoleManager<Function>, RoleManager<Function>>();
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+
+                //Lockout setting 
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+
+                //User setting 
+                options.User.RequireUniqueEmail = false;
+            });
+
+
+            services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
+            services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
+            services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IBlogTypeService, BlogTypeService>();
+            services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IClassRoomService, ClassRoomService>();
+            services.AddTransient<IContactService, ContactService>();
+            services.AddTransient<ICourseService, CourseService>();
+            services.AddTransient<IFeedbackService, FeedbackService>();
+            services.AddTransient<IFunctionService, FunctionService>();
+            services.AddTransient<ILearnerService, LearnerService>();
+            services.AddTransient<ILectureService, LectureService>();
+            services.AddTransient<ISubjectService, SubjectService>();
+            services.AddTransient<ILectureScheduleService, LectureScheduleService>();
+            services.AddTransient<IRegistrationFormService, RegistrationFormService>();
+
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +121,7 @@ namespace KNGSHV.Services
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

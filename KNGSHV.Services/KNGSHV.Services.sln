@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNGSHV.Services", "KNGSHV.Services\KNGSHV.Services.csproj", "{C0EE1B6D-EB12-4941-ADF4-B4DC490E7D78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KNGSHV.Services", "KNGSHV.Services\KNGSHV.Services.csproj", "{C0EE1B6D-EB12-4941-ADF4-B4DC490E7D78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Solution Items", "{B33AE008-714B-44C4-B30B-081BE9898724}"
 EndProject
@@ -13,17 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Application", "2. Applic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Infrastructure", "4. Infrastructure", "{0E74D9A5-E5ED-4D84-8492-0DF0E8E2D78F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Data", "3. Data", "{5FCFC3FB-EF0A-460B-AC84-9CD961E704C8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Domain", "3. Domain", "{5FCFC3FB-EF0A-460B-AC84-9CD961E704C8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Utilities", "5. Utilities", "{87327447-665F-4E38-A713-5B5AF5281D9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNGSHV.Application", "KNGSHV.Application\KNGSHV.Application.csproj", "{C045A657-B635-4D65-AA3C-21ACA9254FE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KNGSHV.Application", "KNGSHV.Application\KNGSHV.Application.csproj", "{C045A657-B635-4D65-AA3C-21ACA9254FE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNGSHV.Data", "KNGSHV.Data\KNGSHV.Data.csproj", "{D916925C-1AC9-4C33-8EAF-B2979181F8F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KNGSHV.Data", "KNGSHV.Data\KNGSHV.Data.csproj", "{D916925C-1AC9-4C33-8EAF-B2979181F8F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNGSHV.Data.EF", "KNGSHV.Data.EF\KNGSHV.Data.EF.csproj", "{F0D38ACE-3FCA-46C9-93CA-C2219EAD752C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KNGSHV.Data.EF", "KNGSHV.Data.EF\KNGSHV.Data.EF.csproj", "{F0D38ACE-3FCA-46C9-93CA-C2219EAD752C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KNGSHV.Infrastructure", "KNGSHV.Infrastructure\KNGSHV.Infrastructure.csproj", "{5E9E0981-6A96-4FE3-BA88-DD91098B952E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KNGSHV.Infrastructure", "KNGSHV.Infrastructure\KNGSHV.Infrastructure.csproj", "{5E9E0981-6A96-4FE3-BA88-DD91098B952E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -60,6 +60,7 @@ namespace KNGSHV.Application.Implementation
             currentAccount.FullName = account.FullName;
             currentAccount.Avatar = account.Avatar;
             currentAccount.BirthDay = account.BirthDay;
+            currentAccount.Address = account.Address;
             currentAccount.Email = account.Email;
             currentAccount.PhoneNumber = account.PhoneNumber;
             _accountRepository.Update(currentAccount);

@@ -1,6 +1,7 @@
 ﻿using KNGSHV.Application.Interfaces;
 using KNGSHV.Application.ViewModels;
 using KNGSHV.Application.ViewModels.Login;
+using KNGSHV.Application.ViewModels.ReponseApi;
 using KNGSHV.Data.EF;
 using KNGSHV.Data.Entities;
 using KNGSHV.Data.Enums;
@@ -88,7 +89,8 @@ namespace KNGSHV.Services.Controllers
                 DateCreated = model.DateCreated,
                 DateModified = model.DateModified,
                 Status = Status.Active,
-
+                Address = model.Address,
+                PhoneNumber = model.PhoneNumber,
             };
 
             try
@@ -126,8 +128,14 @@ namespace KNGSHV.Services.Controllers
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
+
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
+                var permission = (from p in _context.UserRoles
+                                  join f in _context.Functions on p.RoleId equals f.Id
+                                  where user.Id == p.UserId
+                                  select f.Name
+                                 ).ToList();
 
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
@@ -135,6 +143,7 @@ namespace KNGSHV.Services.Controllers
                     {
                         new Claim("UserID",user.Id.ToString()),
                         new Claim("Status",user.Status.ToString()),
+                        new Claim("Permissions",string.Join(", ", permission))
                     }),
                     Expires = DateTime.UtcNow.AddDays(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
@@ -150,11 +159,20 @@ namespace KNGSHV.Services.Controllers
 
         // DELETE: api/Accounts/5
         [HttpDelete("{id}")]
-        public IActionResult DeleteAccount(Guid id)
+        public object DeleteAccount(Guid id)
         {
-            _accountService.Delete(id);
-            _accountService.SaveChanges();
-            return NoContent();
+            try
+            {
+                _accountService.Delete(id);
+                _accountService.SaveChanges();
+                return new ResponseApi<string>("Xóa thành công!", Application.ViewModels.ReponseApi.StatusCode.Success);
+            }
+            catch (Exception)
+            {
+
+                return new ResponseApi<string>("Xóa thất bại!", Application.ViewModels.ReponseApi.StatusCode.Error);
+            }
+          
 
         }
 

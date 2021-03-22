@@ -13,6 +13,8 @@ namespace KNGSHV.Data.Entities
 
         public string FullName { get; set; }
 
+        public string Address { get; set; }
+
         public DateTime? BirthDay { set; get; }
 
         public string Avatar { get; set; }

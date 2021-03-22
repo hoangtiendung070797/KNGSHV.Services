@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KNGSHV.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210302140902_initialize")]
+    [Migration("20210320101906_initialize")]
     partial class initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,6 +29,9 @@ namespace KNGSHV.Data.EF.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Avatar")
                         .HasColumnType("nvarchar(max)");

@@ -20,6 +20,8 @@ namespace KNGSHV.Services
 {
     public class Startup
     {
+        readonly string specificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -39,6 +41,15 @@ namespace KNGSHV.Services
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "KNGSHV.Services", Version = "v1" });
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: specificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:4200/",
+                                                          "http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                                  });
+            });
 
             var mapperConfig = new MapperConfiguration(mc =>
             {
@@ -114,6 +125,8 @@ namespace KNGSHV.Services
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(specificOrigins);
 
             app.UseAuthorization();
 

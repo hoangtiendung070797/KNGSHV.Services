@@ -36,7 +36,7 @@ namespace KNGSHV.Application.AutoMapper
             CreateMap<FunctionViewModel, Function>();
 
             CreateMap<Learner, LearnerViewModel>();
-            CreateMap<LearnerViewModel, LearnerViewModel>();
+            CreateMap<LearnerViewModel, Learner>();
 
             CreateMap<Lecture, LectureViewModel>();
             CreateMap<LectureViewModel, Lecture>();

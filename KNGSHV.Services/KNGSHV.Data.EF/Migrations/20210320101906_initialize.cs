@@ -13,6 +13,7 @@ namespace KNGSHV.Data.EF.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BirthDay = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Avatar = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),

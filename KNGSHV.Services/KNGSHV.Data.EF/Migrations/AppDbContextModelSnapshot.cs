@@ -28,6 +28,9 @@ namespace KNGSHV.Data.EF.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Avatar")
                         .HasColumnType("nvarchar(max)");
 

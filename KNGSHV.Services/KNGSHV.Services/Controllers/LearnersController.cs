@@ -9,6 +9,7 @@ using KNGSHV.Data.EF;
 using KNGSHV.Data.Entities;
 using KNGSHV.Application.Interfaces;
 using KNGSHV.Application.ViewModels;
+using KNGSHV.Application.ViewModels.ReponseApi;
 
 namespace KNGSHV.Services.Controllers
 {
@@ -68,11 +69,21 @@ namespace KNGSHV.Services.Controllers
 
         // DELETE: api/Learners/5
         [HttpDelete("{id}")]
-        public IActionResult DeleteLearner(Guid id)
+        public object DeleteLearner(Guid id)
         {
-            _learnerService.Delete(id);
-            _learnerService.SaveChanges();
-            return Ok();
+            try
+            {
+                _learnerService.Delete(id);
+                _learnerService.SaveChanges();
+                return new ResponseApi<string>("Xóa thành công!", Application.ViewModels.ReponseApi.StatusCode.Success);
+            }
+            catch (Exception)
+            {
+
+                return new ResponseApi<string>("Xóa thành công!", Application.ViewModels.ReponseApi.StatusCode.Success);
+            }
+
+
         }
 
         private bool LearnerExists(Guid id)

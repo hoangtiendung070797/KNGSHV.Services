@@ -28,4 +28,8 @@
     <ProjectReference Include="..\KNGSHV.Infrastructure\KNGSHV.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Images\" />
+  </ItemGroup>
+
 </Project>

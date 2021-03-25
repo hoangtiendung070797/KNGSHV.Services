@@ -69,8 +69,18 @@ namespace KNGSHV.Services.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteLecture(Guid id)
         {
-            _lectureService.Delete(id);
-            return NoContent();
+            try
+            {
+                _lectureService.Delete(id);
+                _lectureService.SaveChanges();
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
 
         private bool LectureExists(Guid id)

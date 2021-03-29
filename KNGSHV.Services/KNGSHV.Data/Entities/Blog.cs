@@ -8,6 +8,7 @@ namespace KNGSHV.Data.Entities
 {
     public class Blog : DomainEntity<Guid>, IDateTracking
     {
+        public string Title { get; set; }
         public string Content { get; set; }
 
         public Guid BlogTypeId { get; set; }

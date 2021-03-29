@@ -323,6 +323,7 @@ namespace KNGSHV.Data.EF.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BlogTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),

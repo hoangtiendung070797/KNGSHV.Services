@@ -8,15 +8,17 @@ namespace KNGSHV.Application.ViewModels
     public class BlogViewModel
     {
         public Guid Id { get; set; }
+        public string Title { get; set; }
         public string Content { get; set; }
+        public string Name { get; set; }
 
         public Guid BlogTypeId { get; set; }
 
-        public BlogType BlogType { get; set; }
+        //public BlogType BlogType { get; set; }
 
         public Guid CreatedUserId { get; set; }
 
-        public Account Account { get; set; }
+       // public Account Account { get; set; }
 
         public DateTime DateCreated { get; set; }
 

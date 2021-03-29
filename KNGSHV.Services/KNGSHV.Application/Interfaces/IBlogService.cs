@@ -14,6 +14,7 @@ namespace KNGSHV.Application.Interfaces
         void Delete(Guid blogTypeId);
 
         List<BlogViewModel> GetBlogs();
+        List<BlogViewModel> GetBlogsDetail();
 
         BlogViewModel GetById(Guid blogTypeId);
 

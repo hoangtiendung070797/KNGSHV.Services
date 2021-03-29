@@ -65,6 +65,10 @@ namespace KNGSHV.Data.EF
             builder.ApplyConfigurationsFromAssembly(typeof(LectureScheduleConfiguration).Assembly);
             builder.ApplyConfigurationsFromAssembly(typeof(RegistrationFormConfiguration).Assembly);
             builder.Entity<IdentityUserRole<Guid>>().ToTable("Permissions");
+
+
+
+
         }
 
 

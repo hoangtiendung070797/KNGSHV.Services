@@ -32,6 +32,14 @@ namespace KNGSHV.Services.Controllers
             return _blogService.GetBlogs();
         }
 
+        // GET: api/BlogsDetail
+        [HttpGet]
+        [Route("BlogsDetail")]
+        public ActionResult<IEnumerable<BlogViewModel>> GetBlogsDetail ()
+        {
+            return _blogService.GetBlogsDetail();
+        }
+
         // GET: api/Blogs/5
         [HttpGet("{id}")]
         public ActionResult<BlogViewModel> GetBlog(Guid id)

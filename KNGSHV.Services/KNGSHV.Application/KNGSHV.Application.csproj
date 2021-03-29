@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KNGSHV.Data.EF\KNGSHV.Data.EF.csproj" />
     <ProjectReference Include="..\KNGSHV.Data\KNGSHV.Data.csproj" />
   </ItemGroup>
 

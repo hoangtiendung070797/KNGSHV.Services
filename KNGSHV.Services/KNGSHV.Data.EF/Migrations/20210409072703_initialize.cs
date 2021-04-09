@@ -409,7 +409,7 @@ namespace KNGSHV.Data.EF.Migrations
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     LectureId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LeanerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LeanerId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     SubjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>

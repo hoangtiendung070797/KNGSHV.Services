@@ -494,7 +494,7 @@ namespace KNGSHV.Data.EF.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("LeanerId")
+                    b.Property<Guid?>("LeanerId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("LectureId")
@@ -744,8 +744,7 @@ namespace KNGSHV.Data.EF.Migrations
                     b.HasOne("KNGSHV.Data.Entities.Learner", "Learner")
                         .WithMany("LectureSchedules")
                         .HasForeignKey("LeanerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("KNGSHV.Data.Entities.Lecture", "Lecture")
                         .WithMany("LectureSchedules")

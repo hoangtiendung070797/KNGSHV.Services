@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KNGSHV.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210328140302_initialize")]
+    [Migration("20210409072703_initialize")]
     partial class initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -496,7 +496,7 @@ namespace KNGSHV.Data.EF.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("LeanerId")
+                    b.Property<Guid?>("LeanerId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("LectureId")
@@ -746,8 +746,7 @@ namespace KNGSHV.Data.EF.Migrations
                     b.HasOne("KNGSHV.Data.Entities.Learner", "Learner")
                         .WithMany("LectureSchedules")
                         .HasForeignKey("LeanerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("KNGSHV.Data.Entities.Lecture", "Lecture")
                         .WithMany("LectureSchedules")

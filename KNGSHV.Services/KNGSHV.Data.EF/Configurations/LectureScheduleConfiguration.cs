@@ -18,8 +18,6 @@ namespace KNGSHV.Data.EF.Configurations
             builder.Property(x => x.ToDate).IsRequired();
             builder.Property(x => x.FromTime).IsRequired();
             builder.Property(x => x.ToTime).IsRequired();
-            builder.Property(x => x.FromDate).IsRequired();
-            builder.Property(x => x.DaysOfWeek).IsRequired();
 
             builder.HasOne(x => x.Lecture).WithMany(x => x.LectureSchedules).HasForeignKey(x => x.LectureId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.Learner).WithMany(x => x.LectureSchedules).HasForeignKey(x => x.LeanerId).OnDelete(DeleteBehavior.Restrict);

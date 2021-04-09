@@ -56,8 +56,7 @@ namespace KNGSHV.Services
                 options.AddPolicy(name: specificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:4200/",
-                                                          "http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                                      builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                                   });
             });
 

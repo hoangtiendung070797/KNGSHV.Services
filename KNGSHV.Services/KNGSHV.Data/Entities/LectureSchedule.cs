@@ -33,9 +33,9 @@ namespace KNGSHV.Data.Entities
 
         public Lecture Lecture { get; set; }
 
-        public Guid LeanerId { get; set; }
+        public Guid? LeanerId { get; set; }
 
-        public Learner Learner { get; set; }
+        public Learner? Learner { get; set; }
 
         public Guid SubjectId { get; set; }
 

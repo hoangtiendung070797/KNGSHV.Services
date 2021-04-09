@@ -32,14 +32,9 @@ namespace KNGSHV.Application.ViewModels
 
         public Guid LectureId { get; set; }
 
-        public Lecture Lecture { get; set; }
-
-        public Guid LeanerId { get; set; }
-
-        public Learner Learner { get; set; }
+        public Guid? LeanerId { get; set; }
 
         public Guid SubjectId { get; set; }
 
-        public Subject Subject { get; set; }
     }
 }
